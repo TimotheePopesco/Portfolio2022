@@ -268,59 +268,69 @@
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <label for="name" class="">Your name</label>
+                                        <input type="text" id="name" name="name" class="form-control">
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <label for="email" class="">Your email</label>
+                                        <input type="text" id="email" name="email" class="form-control">
+                                        
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
                             </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            <!--Grid row-->
+
+                            <!--Grid row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="md-form mb-4 mt-4">
+                                        <label for="subject" class="">Subject</label>
+                                        <input type="text" id="subject" name="subject" class="form-control">
+                                        
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-info btn-xl disabled" id="submitButton" type="submit">Send</button>
+                            <!--Grid row-->
+
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-12">
+
+                                    <div class="md-form">
+                                        <label for="message">Your message</label>
+                                        <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--Grid row-->
+
                         </form>
+
+                        <div class="text-center text-md-left mt-4">
+                            <a class="btn btn-xl btn-primary" onclick="validateForm();">Send</a>
+                        </div>
+                        <div class="status"></div>
+                    </div>
+                    <!--Grid column-->
                     </div>
                 </div>
             </div>
@@ -461,10 +471,10 @@
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/crypto.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">During my 3rd year, I had to create 4 one pages in Html/Css using different Frameworks to improve my productivity. The links to my different pages :
-                                        <a href="assets/img/portfolio/crypto-wallet/crypto-wallet/index.html">CryptoWallet</a>,
-                                        <a href="assets/img/portfolio/hero-gallery/index.html">HeroGallery</a>,
-                                        <a href="assets/img/portfolio/snazzy-fashion/index.html">SnazzyFashion</a> and
-                                        <a href="assets/img/portfolio/smooth-smoothies/index.html">SmoothSmoothies</a>.
+                                        <a href="assets/img/portfolio/crypto-wallet/crypto-wallet/index.php">CryptoWallet</a>,
+                                        <a href="assets/img/portfolio/hero-gallery/index.php">HeroGallery</a>,
+                                        <a href="assets/img/portfolio/snazzy-fashion/index.php">SnazzyFashion</a> and
+                                        <a href="assets/img/portfolio/smooth-smoothies/index.php">SmoothSmoothies</a>.
                                     Find the source code on my 
                                     <a href="https://github.com/TimotheePopesco?tab=repositories">Github</a>.</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
@@ -588,10 +598,61 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="js/competence.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <script>
+            function validateForm() {
+                var name =  document.getElementById('name').value;
+                if (name == "") {
+                    document.querySelector('.status').innerHTML = "Name cannot be empty";
+                    return false;
+                }
+                var email =  document.getElementById('email').value;
+                if (email == "") {
+                    document.querySelector('.status').innerHTML = "Email cannot be empty";
+                    return false;
+                } else {
+                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    if(!re.test(email)){
+                        document.querySelector('.status').innerHTML = "Email format invalid";
+                        return false;
+                    }
+                }
+                var subject =  document.getElementById('subject').value;
+                if (subject == "") {
+                    document.querySelector('.status').innerHTML = "Subject cannot be empty";
+                    return false;
+                }
+                var message =  document.getElementById('message').value;
+                if (message == "") {
+                    document.querySelector('.status').innerHTML = "Message cannot be empty";
+                    return false;
+                }
+                document.getElementById('status').innerHTML = "Sending...";
+                formData = {
+                'name': $('input[name=name]').val(),
+                'email': $('input[name=email]').val(),
+                'subject': $('input[name=subject]').val(),
+                'message': $('textarea[name=message]').val()
+                };
+
+
+                $.ajax({
+                url: "mail.php",
+                type: "POST",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+
+                    $('#status').text(data.message);
+                    if (data.code) //If mail was sent successfully, reset the form.
+                    $('#contact-form').closest('form').find("input[type=text], textarea").val("");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('#status').text(jqXHR);
+                }
+                });
+              }
+        </script>
+
+
     </body>
 </html>
