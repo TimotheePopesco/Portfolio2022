@@ -268,7 +268,7 @@
                 <!-- Contact Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                        <form id="contact-form" name="contact-form" action="mail.php" method="POST"  >
 
                             <!--Grid row-->
                             <div class="row">
@@ -322,19 +322,20 @@
                                 </div>
                             </div>
                             <!--Grid row-->
-
+                            <div class="text-center text-md-left mt-4">
+                            <a class="btn btn-primary" onclick="validateForm();">Send</a>
+                            </div>
+                            <div class="status" id="status"></div>
                         </form>
-
-                        <div class="text-center text-md-left mt-4">
-                            <a class="btn btn-xl btn-primary" onclick="validateForm();">Send</a>
-                        </div>
-                        <div class="status"></div>
                     </div>
                     <!--Grid column-->
                     </div>
                 </div>
             </div>
         </section>
+
+
+
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
@@ -600,58 +601,64 @@
         <script src="js/competence.js"></script>
 
         <script>
-            function validateForm() {
-                var name =  document.getElementById('name').value;
-                if (name == "") {
-                    document.querySelector('.status').innerHTML = "Name cannot be empty";
-                    return false;
-                }
-                var email =  document.getElementById('email').value;
-                if (email == "") {
-                    document.querySelector('.status').innerHTML = "Email cannot be empty";
-                    return false;
-                } else {
-                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                    if(!re.test(email)){
-                        document.querySelector('.status').innerHTML = "Email format invalid";
-                        return false;
-                    }
-                }
-                var subject =  document.getElementById('subject').value;
-                if (subject == "") {
-                    document.querySelector('.status').innerHTML = "Subject cannot be empty";
-                    return false;
-                }
-                var message =  document.getElementById('message').value;
-                if (message == "") {
-                    document.querySelector('.status').innerHTML = "Message cannot be empty";
-                    return false;
-                }
-                document.getElementById('status').innerHTML = "Sending...";
-                formData = {
-                'name': $('input[name=name]').val(),
-                'email': $('input[name=email]').val(),
-                'subject': $('input[name=subject]').val(),
-                'message': $('textarea[name=message]').val()
-                };
+
+function validateForm() {
+  var name =  document.getElementById('name').value;
+  if (name == "") {
+      document.querySelector('.status').innerHTML = "Name cannot be empty";
+      return false;
+  }
+  var email =  document.getElementById('email').value;
+  if (email == "") {
+      document.querySelector('.status').innerHTML = "Email cannot be empty";
+      return false;
+  } else {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if(!re.test(email)){
+          document.querySelector('.status').innerHTML = "Email format invalid";
+          return false;
+      }
+  }
+  var subject =  document.getElementById('subject').value;
+  if (subject == "") {
+      document.querySelector('.status').innerHTML = "Subject cannot be empty";
+      return false;
+  }
+  var message =  document.getElementById('message').value;
+  if (message == "") {
+      document.querySelector('.status').innerHTML = "Message cannot be empty";
+      return false;
+  }
+  document.getElementById('status').innerHTML = "Sending...";
+    formData = {
+        'name'     : $('input[name=name]').val(),
+        'email'    : $('input[name=email]').val(),
+        'subject'  : $('input[name=subject]').val(),
+        'message'  : $('textarea[name=message]').val()
+    };
 
 
-                $.ajax({
-                url: "mail.php",
-                type: "POST",
-                data: formData,
-                success: function (data, textStatus, jqXHR) {
+   $.ajax({
+    url : "mail.php",
+    type: "POST",
+    data : formData,
+    success: function(data, textStatus, jqXHR)
+    {
 
-                    $('#status').text(data.message);
-                    if (data.code) //If mail was sent successfully, reset the form.
-                    $('#contact-form').closest('form').find("input[type=text], textarea").val("");
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    $('#status').text(jqXHR);
-                }
-                });
-              }
-        </script>
+        $('#status').text(data.message);
+        if (data.code) //If mail was sent successfully, reset the form.
+        $('#contact-form').closest('form').find("input[type=text], textarea").val("");
+    },
+    error: function (jqXHR, textStatus, errorThrown)
+    {
+        $('#status').text(jqXHR);
+    }
+});
+
+
+}
+
+    </script>
 
 
     </body>
